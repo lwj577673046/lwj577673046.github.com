@@ -1,14 +1,42 @@
+
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
 <title>无标题文档</title>
 <style>
-	a{ width:300px; height:80px; text-align:center; line-height:80px; font-size:20px; color:#FFF; margin:100px 500px; border-radius:20px; text-decoration:none; background:#036; box-shadow:inset 0 0 10px #096,0px 10px 5px #000; text-shadow:0px 5px 20px #099; position:absolute; top:0; left:0;}
+#box{ width:500px; margin:100px auto}
+#box2{ width:300px; height:22px; border:1px solid #000; border-radius:10px; position:relative; overflow:hidden; margin-top:20px}
+#box3{ width:400px; height:400px; position:absolute; top:0; left:0; background:-webkit-repeating-linear-gradient(-45deg,red 0px,red 8px,#0f3 8px,#0f3 16px)}
 </style>
+<script>
+window.onload=function(){
+	//var oTwo=document.getElementById('two');
+	var aInp=document.getElementsByTagName('input');
+	var oBox=document.getElementById('box3');
+	var t=0;
+	setInterval(function(){
+		t+=2;
+		oBox.style.top=-(t%22)+'px';	
+	},30);
+	for(var i=0;i<aInp.length;i++){
+		aInp[i].onchange=function(){
+			oBox.style.background='-webkit-repeating-linear-gradient(-45deg,'+aInp[0].value+' 0px,'+aInp[0].value+' 8px,'+aInp[1].value+' 8px,'+aInp[1].value+' 16px)';	
+			
+		};	
+	}
+};
+</script>
 </head>
 
 <body>
-<a href="#">按钮</a>
+	<div id="box">
+    	<input type="color" value="#FF0000" id="bag">
+    	<input type="color" value="#00FF33" id="bag">
+        <div id="box2">
+            <div id="box3"></div>
+        </div>
+    </div>
 </body>
+
 </html>
